@@ -2,22 +2,49 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>The Yummy Place</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Yummy Place - Menú</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <h1>THE YUMMY PLACE</h1>
-        <p>Gastronomía de autor</p>
-    </header>
+    <div class="phone-frame">
+        <div class="app-container">
+            
+            <header class="app-header">
+                <div class="cocktail-banner">
+                    <img src="https://images.unsplash.com/photo-1609344591243-c87f7683a629?q=80&w=800&auto=format&fit=crop" alt="Cóctel 1">
+                    <img src="https://images.unsplash.com/photo-1593284176799-0773bf10d330?q=80&w=800&auto=format&fit=crop" alt="Cóctel 2">
+                    <img src="https://images.unsplash.com/photo-1571680001646-a4d7a2383f78?q=80&w=800&auto=format&fit=crop" alt="Cóctel 3">
+                    <img src="https://images.unsplash.com/photo-1603133872878-684f20898e86?q=80&w=800&auto=format&fit=crop" alt="Cóctel 4">
+                    <img src="https://images.unsplash.com/photo-1551451676-909ed732f26c?q=80&w=800&auto=format&fit=crop" alt="Cóctel 5">
+                </div>
+                <div class="header-text">
+                    <h1>The Yummy Place</h1>
+                    <p>Restaurante - Bar - Barra de cócteles</p>
+                </div>
+            </header>
 
-    <nav id="tabs"></nav>
+            <main class="menu-content">
+                <nav id="tabs" class="category-tabs">
+                    </nav>
 
-    <main id="content">
-        <div id="menu-display"></div>
-    </main>
+                <div id="category-banner" class="category-banner">
+                    <img id="banner-img" src="" alt="Categoría">
+                    <div class="banner-overlay">
+                        <h2 id="banner-title"></h2>
+                        <p id="banner-desc"></p>
+                    </div>
+                </div>
+
+                <div id="menu-display" class="dish-list">
+                    </div>
+            </main>
+
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
-</html>l>
+</html>
