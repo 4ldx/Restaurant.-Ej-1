@@ -1,46 +1,64 @@
-/* Reset básico para evitar espacios extraños */
+/* --- RESET Y BASE --- */
 * { box-sizing: border-box; }
-body { margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; color: #333; }
+body { 
+    margin: 0; 
+    font-family: 'Georgia', serif; 
+    background-color: #fdfdfc; 
+    background-image: radial-gradient(#ececec 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: #2c3e50; 
+}
 
-/* Contenedor principal para que nada se desborde */
 #content { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-/* Barra de navegación */
+/* --- NAVEGACIÓN --- */
 #tabs { 
     display: flex; 
     justify-content: center; 
-    gap: 10px; 
-    padding: 15px; 
-    background: #fff; 
-    border-bottom: 1px solid #ddd;
-    position: sticky; top: 0; z-index: 10;
+    gap: 15px; 
+    padding: 30px 10px; 
+    background: transparent;
 }
 
 button { 
-    border: none; background: #eee; padding: 8px 15px; border-radius: 20px; 
-    cursor: pointer; font-size: 0.9rem; transition: 0.3s;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-button:hover { background: #ddd; }
+button:hover { background: #f0f0f0; }
 
-/* Diseño de la tarjeta de cada platillo */
+/* --- TARJETAS DE PLATILLOS --- */
 .item { 
     display: flex; 
     align-items: center; 
-    background: white; 
-    padding: 15px; 
-    margin-bottom: 12px; 
-    border-radius: 12px; 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: #ffffff; 
+    padding: 20px; 
+    margin-bottom: 15px; 
+    border-radius: 8px; 
+    border: 1px solid #eee; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03); 
+    transition: transform 0.2s;
 }
 
+.item:hover { transform: scale(1.01); }
+
 .item-img { 
-    width: 70px; height: 70px; 
-    border-radius: 10px; /* Bordes redondeados en lugar de círculo para verse más moderno */
+    width: 70px; 
+    height: 70px; 
+    border-radius: 8px; 
     object-fit: cover; 
     margin-right: 15px; 
+    flex-shrink: 0;
 }
 
 .item-info h2 { font-size: 1.1rem; margin: 0 0 5px 0; }
 .item-info p { font-size: 0.85rem; color: #666; margin: 0 0 5px 0; }
-.price { font-weight: bold; color: #d32f2f; }
+.price { font-weight: bold; color: #d32f2f; font-size: 0.9rem; }
