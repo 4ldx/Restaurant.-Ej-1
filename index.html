@@ -1,41 +1,270 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Yummy Place | Menú Premium</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <title>MenuStudio</title>
+
+    <meta name="description" content="Menú Digital">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/base.css">
+
+    <link rel="stylesheet" href="css/theme.css">
+
+    <link rel="stylesheet" href="css/responsive.css">
+
 </head>
+
 <body>
 
-    <header class="main-header" id="header">
-        <div class="header-content">
-            <div class="logo-circle">YP</div>
-            <h1>The Yummy Place</h1>
-            <p>Gastronomía de Autor & Coctelería</p>
-            <div class="header-actions">
-                <button class="action-btn">WhatsApp</button>
-                <button class="action-btn">Llamar</button>
+    <!-- ========================= -->
+
+    <!-- HERO -->
+
+    <!-- ========================= -->
+
+    <header class="hero">
+
+        <img id="coverImage" class="cover-image" src="assets/portada.jpg">
+
+        <div class="overlay"></div>
+
+        <div class="restaurant-info">
+
+            <img id="logo" class="logo" src="assets/logo.png">
+
+            <h1 id="restaurantName"></h1>
+
+            <p id="restaurantSlogan"></p>
+
+            <div class="rating">
+
+                <i class="fa-solid fa-star"></i>
+
+                <span>4.9</span>
+
             </div>
+
+            <div class="info-buttons">
+
+                <button id="btnWhatsapp">
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                </button>
+
+                <button id="btnCall">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                </button>
+
+                <button id="btnMaps">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                </button>
+
+            </div>
+
         </div>
+
     </header>
 
-    <div class="search-bar">
-        <input type="text" placeholder="¿Qué se te antoja hoy?" id="search">
-    </div>
+    <!-- ========================= -->
 
-    <nav class="categories-nav" id="tabs"></nav>
+    <!-- SEARCH -->
 
-    <main id="menu-container"></main>
+    <!-- ========================= -->
 
-    <div id="product-modal" class="modal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">×</button>
-            <div id="modal-body"></div>
+    <section class="search-section">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+
+                type="text"
+
+                id="search"
+
+                placeholder="Buscar productos...">
+
         </div>
+
+    </section>
+
+    <!-- ========================= -->
+
+    <!-- CATEGORIES -->
+
+    <!-- ========================= -->
+
+    <section class="categories">
+
+        <div id="categoriesContainer"></div>
+
+    </section>
+
+    <!-- ========================= -->
+
+    <!-- FEATURED -->
+
+    <!-- ========================= -->
+
+    <section class="featured">
+
+        <h2>
+
+            <i class="fa-solid fa-fire"></i>
+
+            Más vendidos
+
+        </h2>
+
+        <div id="featuredProducts"></div>
+
+    </section>
+
+    <!-- ========================= -->
+
+    <!-- PRODUCTS -->
+
+    <!-- ========================= -->
+
+    <main>
+
+        <div id="productsContainer"></div>
+
+    </main>
+
+    <!-- ========================= -->
+
+    <!-- PRODUCT MODAL -->
+
+    <!-- ========================= -->
+
+    <div id="productModal" class="modal">
+
+        <div class="modal-content">
+
+            <button id="closeModal">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+            <div id="modalBody"></div>
+
+        </div>
+
     </div>
 
-    <script src="script.js"></script>
+    <!-- ========================= -->
+
+    <!-- FLOATING CART -->
+
+    <!-- ========================= -->
+
+    <button id="floatingCart">
+
+        <i class="fa-solid fa-cart-shopping"></i>
+
+        <span id="cartCounter">0</span>
+
+    </button>
+
+    <!-- ========================= -->
+
+    <!-- CART -->
+
+    <!-- ========================= -->
+
+    <aside id="cart">
+
+        <div class="cart-header">
+
+            <h2>
+
+                Tu pedido
+
+            </h2>
+
+            <button id="closeCart">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-footer">
+
+            <h3>
+
+                Total
+
+                <span id="cartTotal">
+
+                    $0
+
+                </span>
+
+            </h3>
+
+            <button id="sendOrder">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                Enviar Pedido
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- ========================= -->
+
+    <!-- LOADING -->
+
+    <!-- ========================= -->
+
+    <div id="loader">
+
+        <div class="spinner"></div>
+
+    </div>
+
+    <!-- JS -->
+
+    <script src="js/config.js"></script>
+
+    <script src="js/products.js"></script>
+
+    <script src="js/app.js"></script>
+
 </body>
+
 </html>
