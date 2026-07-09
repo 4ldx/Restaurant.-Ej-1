@@ -1,34 +1,114 @@
-:root {
-    --primary: #c5a059;
-    --bg: #ffffff;
-    --text: #1a1a1a;
-    --radius: 20px;
+/* =======================================================
+   MENUSTUDIO
+   VARIABLES GLOBALES
+======================================================= */
+
+:root{
+
+    /* ===========================
+       COLORES
+    =========================== */
+
+    --primary:#6B1E2D;
+    --primary-light:#8C3244;
+    --primary-dark:#4E1320;
+
+    --secondary:#FFFFFF;
+
+    --background:#F7F7F7;
+
+    --surface:#FFFFFF;
+
+    --text:#222222;
+
+    --text-light:#666666;
+
+    --border:#E6E6E6;
+
+    --success:#2E7D32;
+
+    --warning:#F9A825;
+
+    --danger:#C62828;
+
+    /* ===========================
+       TIPOGRAFÍA
+    =========================== */
+
+    --font:'Poppins',sans-serif;
+
+    --title-size:2rem;
+
+    --subtitle-size:1.2rem;
+
+    --text-size:1rem;
+
+    --small-size:.85rem;
+
+    /* ===========================
+       ESPACIADOS
+    =========================== */
+
+    --space-xs:5px;
+
+    --space-sm:10px;
+
+    --space-md:20px;
+
+    --space-lg:30px;
+
+    --space-xl:50px;
+
+    /* ===========================
+       BORDES
+    =========================== */
+
+    --radius-sm:10px;
+
+    --radius-md:18px;
+
+    --radius-lg:30px;
+
+    --radius-round:50%;
+
+    /* ===========================
+       SOMBRAS
+    =========================== */
+
+    --shadow-sm:0 2px 8px rgba(0,0,0,.08);
+
+    --shadow-md:0 8px 20px rgba(0,0,0,.12);
+
+    --shadow-lg:0 15px 35px rgba(0,0,0,.18);
+
+    /* ===========================
+       HEADER
+    =========================== */
+
+    --hero-height:320px;
+
+    --logo-size:120px;
+
+    /* ===========================
+       BOTONES
+    =========================== */
+
+    --button-height:52px;
+
+    --button-radius:15px;
+
+    /* ===========================
+       TARJETAS
+    =========================== */
+
+    --card-radius:20px;
+
+    --card-padding:18px;
+
+    /* ===========================
+       TRANSICIONES
+    =========================== */
+
+    --transition:.30s ease;
+
 }
-
-* { box-sizing: border-box; transition: 0.3s ease; }
-
-body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
-
-/* Header Animado */
-.main-header { height: 350px; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('banner.jpg'); background-size: cover; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-
-/* Tarjetas Premium */
-.product-card { 
-    background: white; 
-    border-radius: var(--radius); 
-    padding: 15px; 
-    margin: 15px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    display: flex; gap: 15px;
-}
-
-.product-card img { width: 100px; height: 100px; border-radius: 15px; object-fit: cover; }
-
-/* Categorías (Scroll Horizontal) */
-.categories-nav { display: flex; overflow-x: auto; padding: 20px; gap: 15px; }
-.cat-btn { white-space: nowrap; padding: 10px 20px; border: 1px solid #ddd; border-radius: 50px; cursor: pointer; }
-.cat-btn.active { background: var(--primary); color: white; border: none; }
-
-/* Modal Glassmorphism */
-.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); display: none; }
-.modal-content { background: white; width: 90%; max-width: 500px; margin: 50px auto; padding: 20px; border-radius: var(--radius); }
