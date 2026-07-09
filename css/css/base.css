@@ -1,1 +1,423 @@
+/* ==========================================
+   RESET
+========================================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:var(--font);
+
+    background:var(--background);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+}
+
+/* ==========================================
+   IMÁGENES
+========================================== */
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+/* ==========================================
+   ENLACES
+========================================== */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* ==========================================
+   BOTONES
+========================================== */
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    font-family:inherit;
+
+}
+
+/* ==========================================
+   CONTENEDOR
+========================================== */
+
+main{
+
+    width:100%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:30px 20px 120px;
+
+}
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero{
+
+    position:relative;
+
+    height:var(--hero-height);
+
+    overflow:hidden;
+
+}
+
+.cover-image{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        rgba(0,0,0,.25),
+
+        rgba(0,0,0,.55)
+
+    );
+
+}
+
+.restaurant-info{
+
+    position:absolute;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:100%;
+
+    text-align:center;
+
+    color:white;
+
+    padding:0 20px;
+
+}
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.logo{
+
+    width:var(--logo-size);
+
+    height:var(--logo-size);
+
+    margin:auto;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:5px solid white;
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+/* ==========================================
+   TITULOS
+========================================== */
+
+.restaurant-info h1{
+
+    margin-top:15px;
+
+    font-size:var(--title-size);
+
+    font-weight:700;
+
+}
+
+.restaurant-info p{
+
+    margin-top:8px;
+
+    font-size:var(--text-size);
+
+}
+
+/* ==========================================
+   CALIFICACIÓN
+========================================== */
+
+.rating{
+
+    margin-top:12px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.rating i{
+
+    color:#FFD54F;
+
+}
+
+/* ==========================================
+   BOTONES HEADER
+========================================== */
+
+.info-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+.info-buttons button{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:var(--primary);
+
+    font-size:18px;
+
+    transition:var(--transition);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.info-buttons button:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* ==========================================
+   BUSCADOR
+========================================== */
+
+.search-section{
+
+    padding:25px;
+
+}
+
+.search-box{
+
+    background:white;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px 20px;
+
+    border-radius:50px;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.search-box input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    font-size:1rem;
+
+    background:none;
+
+}
+
+.search-box i{
+
+    color:var(--primary);
+
+}
+
+/* ==========================================
+   CATEGORÍAS
+========================================== */
+
+.categories{
+
+    overflow-x:auto;
+
+    white-space:nowrap;
+
+    padding:0 20px 25px;
+
+}
+
+.categories::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+#categoriesContainer{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+/* ==========================================
+   SECCIONES
+========================================== */
+
+section{
+
+    margin-bottom:25px;
+
+}
+
+/* ==========================================
+   TITULOS
+========================================== */
+
+h2{
+
+    margin-bottom:20px;
+
+}
+
+/* ==========================================
+   LOADER
+========================================== */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.spinner{
+
+    width:55px;
+
+    height:55px;
+
+    border:5px solid #ddd;
+
+    border-top:5px solid var(--primary);
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==========================================
+   SCROLL
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ececec;
+
+}
