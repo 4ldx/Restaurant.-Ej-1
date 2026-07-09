@@ -1,42 +1,48 @@
-let cart = [];
+let cartItemsList = [];
 let selectedProduct = null;
-let quantity = 1;
+let selectedQuantity = 1;
 
-const restaurantName = document.getElementById("restaurantName");
-const restaurantSlogan = document.getElementById("restaurantSlogan");
-const logo = document.getElementById("logo");
-const coverImage = document.getElementById("coverImage");
+const $ = (selector) => document.querySelector(selector);
 
-const btnWhatsapp = document.getElementById("btnWhatsapp");
-const btnCall = document.getElementById("btnCall");
-const btnMaps = document.getElementById("btnMaps");
+const restaurantName = $("#restaurantName");
+const restaurantSlogan = $("#restaurantSlogan");
+const logo = $("#logo");
+const coverImage = $("#coverImage");
 
-const searchInput = document.getElementById("search");
-const categoriesContainer = document.getElementById("categoriesContainer");
-const productsContainer = document.getElementById("productsContainer");
-const featuredProducts = document.getElementById("featuredProducts");
+const btnWhatsapp = $("#btnWhatsapp");
+const btnCall = $("#btnCall");
+const btnMaps = $("#btnMaps");
 
-const productModal = document.getElementById("productModal");
-const modalBody = document.getElementById("modalBody");
-const closeModal = document.getElementById("closeModal");
+const searchInput = $("#search");
+const categoriesContainer = $("#categoriesContainer");
+const productsContainer = $("#productsContainer");
+const featuredProducts = $("#featuredProducts");
 
-const floatingCart = document.getElementById("floatingCart");
-const cart = document.getElementById("cart");
-const closeCart = document.getElementById("closeCart");
-const cartItems = document.getElementById("cartItems");
-const cartTotal = document.getElementById("cartTotal");
-const cartCounter = document.getElementById("cartCounter");
-const sendOrder = document.getElementById("sendOrder");
+const productModal = $("#productModal");
+const modalBody = $("#modalBody");
+const closeModal = $("#closeModal");
 
-const loader = document.getElementById("loader");
+const floatingCart = $("#floatingCart");
+const cartPanel = $("#cart");
+const closeCart = $("#closeCart");
+const cartItems = $("#cartItems");
+const cartTotal = $("#cartTotal");
+const cartCounter = $("#cartCounter");
+const sendOrder = $("#sendOrder");
+
+const loader = $("#loader");
 
 document.addEventListener("DOMContentLoaded", () => {
     loadRestaurant();
     renderCategories();
     renderProducts(products);
-    renderFeatured();
+    renderFeaturedProducts();
     hideLoader();
 });
+
+function money(value) {
+    return `$${value.toFixed(2)} MXN`;
+}
 
 function loadRestaurant() {
     restaurantName.textContent = restaurant.name;
@@ -44,17 +50,11 @@ function loadRestaurant() {
     logo.src = restaurant.logo;
     coverImage.src = restaurant.cover;
 
-    btnWhatsapp.onclick = () => {
-        window.open(`https://wa.me/${restaurant.whatsapp}`, "_blank");
-    };
+    document.title = restaurant.name;
 
-    btnCall.onclick = () => {
-        window.location.href = `tel:${restaurant.phone}`;
-    };
-
-    btnMaps.onclick = () => {
-        window.open(restaurant.maps, "_blank");
-    };
+    btnWhatsapp.onclick = () => window.open(`https://wa.me/${restaurant.whatsapp}`, "_blank");
+    btnCall.onclick = () => window.location.href = `tel:${restaurant.phone}`;
+    btnMaps.onclick = () => window.open(restaurant.maps, "_blank");
 }
 
 function renderCategories() {
@@ -67,20 +67,18 @@ function renderCategories() {
         button.className = "category-btn";
         button.textContent = category;
 
-        if (index === 0) {
-            button.classList.add("active");
-        }
+        if (index === 0) button.classList.add("active");
 
         button.addEventListener("click", () => {
             document.querySelectorAll(".category-btn").forEach(btn => btn.classList.remove("active"));
             button.classList.add("active");
 
-            if (category === "Todos") {
-                renderProducts(products);
-            } else {
-                const filtered = products.filter(product => product.category === category);
-                renderProducts(filtered);
-            }
+            const filtered = category === "Todos"
+                ? products
+                : products.filter(product => product.category === category);
+
+            searchInput.value = "";
+            renderProducts(filtered);
         });
 
         categoriesContainer.appendChild(button);
@@ -90,21 +88,20 @@ function renderCategories() {
 function renderProducts(list) {
     productsContainer.innerHTML = "";
 
-    if (list.length === 0) {
-        productsContainer.innerHTML = `<p>No se encontraron productos.</p>`;
+    if (!list.length) {
+        productsContainer.innerHTML = `<p class="empty-message">No se encontraron productos.</p>`;
         return;
     }
 
     list.forEach(product => {
-        const card = createProductCard(product);
-        productsContainer.appendChild(card);
+        productsContainer.appendChild(createProductCard(product));
     });
 }
 
-function renderFeatured() {
-    featuredProducts.innerHTML = "";
-
+function renderFeaturedProducts() {
     const featured = products.filter(product => product.featured);
+
+    featuredProducts.innerHTML = "";
 
     featured.forEach(product => {
         const card = createProductCard(product);
@@ -122,17 +119,18 @@ function createProductCard(product) {
 
         <div class="product-content">
             <h3 class="product-title">${product.name}</h3>
-
             <p class="product-description">${product.description}</p>
 
             <div class="badges">
-                ${product.badges.map(badge => `<span class="badge badge-hot">${badge}</span>`).join("")}
+                ${(product.badges || []).map(badge => `
+                    <span class="badge badge-hot">${badge}</span>
+                `).join("")}
             </div>
 
             <div class="product-footer">
-                <span class="product-price">$${product.price}</span>
+                <span class="product-price">${money(product.price)}</span>
 
-                <button class="add-button">
+                <button class="add-button" aria-label="Agregar ${product.name}">
                     <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
@@ -151,25 +149,23 @@ function createProductCard(product) {
 
 function openProductModal(product) {
     selectedProduct = product;
-    quantity = 1;
+    selectedQuantity = 1;
 
     modalBody.innerHTML = `
         <img class="product-image" src="${product.image}" alt="${product.name}">
 
         <div class="product-content">
             <h2>${product.name}</h2>
-
             <p class="product-description">${product.description}</p>
+            <h3 class="product-price">${money(product.price)}</h3>
 
-            <h3 class="product-price">$${product.price}</h3>
-
-            <div style="display:flex;align-items:center;gap:15px;margin-top:20px;">
+            <div class="quantity-control">
                 <button onclick="changeQuantity(-1)" class="category-btn">-</button>
                 <strong id="modalQuantity">1</strong>
                 <button onclick="changeQuantity(1)" class="category-btn">+</button>
             </div>
 
-            <button onclick="addSelectedToCart()" id="sendOrder" style="margin-top:25px;">
+            <button onclick="addSelectedToCart()" class="modal-add-btn">
                 Agregar al pedido
             </button>
         </div>
@@ -179,29 +175,29 @@ function openProductModal(product) {
 }
 
 function changeQuantity(value) {
-    quantity += value;
+    selectedQuantity += value;
 
-    if (quantity < 1) {
-        quantity = 1;
-    }
+    if (selectedQuantity < 1) selectedQuantity = 1;
 
-    document.getElementById("modalQuantity").textContent = quantity;
+    $("#modalQuantity").textContent = selectedQuantity;
 }
 
 function addSelectedToCart() {
-    addToCart(selectedProduct, quantity);
+    if (!selectedProduct) return;
+
+    addToCart(selectedProduct, selectedQuantity);
     productModal.classList.remove("active");
 }
 
-function addToCart(product, qty) {
-    const existing = cart.find(item => item.id === product.id);
+function addToCart(product, quantity) {
+    const existingProduct = cartItemsList.find(item => item.id === product.id);
 
-    if (existing) {
-        existing.quantity += qty;
+    if (existingProduct) {
+        existingProduct.quantity += quantity;
     } else {
-        cart.push({
+        cartItemsList.push({
             ...product,
-            quantity: qty
+            quantity
         });
     }
 
@@ -214,27 +210,42 @@ function updateCart() {
     let total = 0;
     let count = 0;
 
-    cart.forEach(item => {
+    if (!cartItemsList.length) {
+        cartItems.innerHTML = `<p class="empty-message">Tu carrito está vacío.</p>`;
+    }
+
+    cartItemsList.forEach(item => {
         total += item.price * item.quantity;
         count += item.quantity;
 
         const div = document.createElement("div");
-        div.style.marginBottom = "18px";
+        div.className = "cart-item";
 
         div.innerHTML = `
-            <strong>${item.name}</strong>
-            <p>${item.quantity} x $${item.price}</p>
+            <div>
+                <strong>${item.name}</strong>
+                <p>${item.quantity} x ${money(item.price)}</p>
+            </div>
+
+            <button onclick="removeFromCart(${item.id})">
+                <i class="fa-solid fa-trash"></i>
+            </button>
         `;
 
         cartItems.appendChild(div);
     });
 
-    cartTotal.textContent = `$${total}`;
+    cartTotal.textContent = money(total);
     cartCounter.textContent = count;
 }
 
+function removeFromCart(productId) {
+    cartItemsList = cartItemsList.filter(item => item.id !== productId);
+    updateCart();
+}
+
 searchInput.addEventListener("input", () => {
-    const value = searchInput.value.toLowerCase();
+    const value = searchInput.value.toLowerCase().trim();
 
     const filtered = products.filter(product =>
         product.name.toLowerCase().includes(value) ||
@@ -249,27 +260,36 @@ closeModal.addEventListener("click", () => {
     productModal.classList.remove("active");
 });
 
+productModal.addEventListener("click", (event) => {
+    if (event.target === productModal) {
+        productModal.classList.remove("active");
+    }
+});
+
 floatingCart.addEventListener("click", () => {
-    cart.classList.add("active");
+    cartPanel.classList.add("active");
 });
 
 closeCart.addEventListener("click", () => {
-    cart.classList.remove("active");
+    cartPanel.classList.remove("active");
 });
 
 sendOrder.addEventListener("click", () => {
-    if (cart.length === 0) {
+    if (!cartItemsList.length) {
         alert("Tu carrito está vacío.");
         return;
     }
 
-    let message = `Hola, quiero hacer un pedido:%0A%0A`;
+    let total = 0;
+    let message = `Hola, quiero hacer un pedido en ${restaurant.name}:%0A%0A`;
 
-    cart.forEach(item => {
-        message += `${item.quantity} x ${item.name} - $${item.price * item.quantity}%0A`;
+    cartItemsList.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+        message += `• ${item.quantity} x ${item.name} - ${money(subtotal)}%0A`;
     });
 
-    message += `%0ATotal: ${cartTotal.textContent}`;
+    message += `%0ATotal: ${money(total)}`;
 
     window.open(`https://wa.me/${restaurant.whatsapp}?text=${message}`, "_blank");
 });
