@@ -1,64 +1,49 @@
-/* --- RESET Y BASE --- */
 * { box-sizing: border-box; }
 body { 
     margin: 0; 
-    font-family: 'Georgia', serif; 
-    background-color: #fdfdfc; 
-    background-image: radial-gradient(#ececec 1px, transparent 1px);
-    background-size: 20px 20px;
-    color: #2c3e50; 
+    font-family: 'Playfair Display', serif; /* Fuente con clase */
+    background-color: #1a1a1a; /* Fondo oscuro elegante */
+    color: #f4f4f4; 
 }
 
-#content { max-width: 500px; margin: 0 auto; padding: 20px; }
-
-/* --- NAVEGACIÓN --- */
-#tabs { 
-    display: flex; 
-    justify-content: center; 
-    gap: 15px; 
-    padding: 30px 10px; 
-    background: transparent;
+/* Cabecera impactante */
+header { 
+    height: 300px; 
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1200'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-button { 
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
+header h1 { font-size: 3rem; margin: 0; letter-spacing: 2px; }
 
-button:hover { background: #f0f0f0; }
+/* Contenedor central */
+#content { max-width: 600px; margin: -50px auto 50px auto; padding: 0 20px; }
 
-/* --- TARJETAS DE PLATILLOS --- */
+/* Tarjetas con efecto cristal (Glassmorphism) */
 .item { 
     display: flex; 
     align-items: center; 
-    background: #ffffff; 
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(10px);
     padding: 20px; 
     margin-bottom: 15px; 
-    border-radius: 8px; 
-    border: 1px solid #eee; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.03); 
-    transition: transform 0.2s;
+    border-radius: 15px; 
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
-.item:hover { transform: scale(1.01); }
+.item-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-right: 20px; border: 2px solid #c5a059; }
 
-.item-img { 
-    width: 70px; 
-    height: 70px; 
-    border-radius: 8px; 
-    object-fit: cover; 
-    margin-right: 15px; 
-    flex-shrink: 0;
-}
+.item-info h2 { font-size: 1.3rem; color: #c5a059; margin: 0 0 5px 0; }
+.item-info p { font-size: 0.9rem; color: #ccc; }
+.price { font-weight: bold; color: #fff; }
 
-.item-info h2 { font-size: 1.1rem; margin: 0 0 5px 0; }
-.item-info p { font-size: 0.85rem; color: #666; margin: 0 0 5px 0; }
-.price { font-weight: bold; color: #d32f2f; font-size: 0.9rem; }
+/* Navegación elegante */
+#tabs { display: flex; justify-content: center; gap: 20px; padding: 20px; }
+button { background: none; border: 1px solid #c5a059; color: #c5a059; padding: 10px 20px; cursor: pointer; transition: 0.3s; }
+button:hover { background: #c5a059; color: white; }
