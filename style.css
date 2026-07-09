@@ -1,49 +1,25 @@
-* { box-sizing: border-box; }
-body { 
-    margin: 0; 
-    font-family: 'Playfair Display', serif; /* Fuente con clase */
-    background-color: #1a1a1a; /* Fondo oscuro elegante */
-    color: #f4f4f4; 
-}
+body { margin: 0; font-family: 'Georgia', serif; background-color: #1a1a1a; color: #f4f4f4; }
 
-/* Cabecera impactante */
 header { 
     height: 300px; 
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1200'); 
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1200'); 
+    background-size: cover; background-position: center;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; margin-bottom: 20px;
 }
 
-header h1 { font-size: 3rem; margin: 0; letter-spacing: 2px; }
+#content { max-width: 600px; margin: auto; padding: 20px; }
 
-/* Contenedor central */
-#content { max-width: 600px; margin: -50px auto 50px auto; padding: 0 20px; }
+#tabs { display: flex; justify-content: center; margin-bottom: 20px; }
 
-/* Tarjetas con efecto cristal (Glassmorphism) */
+button { background: #333; color: white; border: none; padding: 10px 20px; cursor: pointer; margin: 5px; border-radius: 4px; }
+button:hover { background: #c5a059; }
+
 .item { 
-    display: flex; 
-    align-items: center; 
-    background: rgba(255, 255, 255, 0.05); 
-    backdrop-filter: blur(10px);
-    padding: 20px; 
-    margin-bottom: 15px; 
-    border-radius: 15px; 
-    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; background: #262626; padding: 20px; 
+    margin-bottom: 15px; border-radius: 12px; border: 1px solid #333;
 }
 
-.item-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-right: 20px; border: 2px solid #c5a059; }
-
-.item-info h2 { font-size: 1.3rem; color: #c5a059; margin: 0 0 5px 0; }
-.item-info p { font-size: 0.9rem; color: #ccc; }
-.price { font-weight: bold; color: #fff; }
-
-/* Navegación elegante */
-#tabs { display: flex; justify-content: center; gap: 20px; padding: 20px; }
-button { background: none; border: 1px solid #c5a059; color: #c5a059; padding: 10px 20px; cursor: pointer; transition: 0.3s; }
-button:hover { background: #c5a059; color: white; }
+.item-img { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; margin-right: 20px; }
+.item-info h2 { margin: 0; color: #c5a059; }
+.price { color: #fff; font-weight: bold; }
