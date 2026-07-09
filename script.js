@@ -1,42 +1,50 @@
-const menuData = { 
-    "Entradas": [
-        { n: "Carpaccio de Res", p: "€180.00", desc: "Finas láminas con arúgula y parmesano.", img: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=300&q=80" },
-        { n: "Burrata Fresca", p: "€210.00", desc: "Tomates cherry, albahaca y aceite de trufa.", img: "https://images.unsplash.com/photo-1608039756073-6535311e9a3f?auto=format&fit=crop&w=300&q=80" },
-        { n: "Tostada de Atún", p: "€150.00", desc: "Atún fresco, aguacate y aderezo oriental.", img: "https://images.unsplash.com/photo-1599824673896-857e53f05353?auto=format&fit=crop&w=300&q=80" }
-    ],
-    "Platos Fuertes": [
-        { n: "Rib Eye Premium", p: "€450.00", desc: "Corte de 300g madurado 21 días.", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80" },
-        { n: "Salmón a la Parrilla", p: "€380.00", desc: "Con costra de hierbas y puré de camote.", img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=300&q=80" },
-        { n: "Risotto Funghi", p: "€290.00", desc: "Arroz arborio, setas mixtas y parmesano.", img: "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=300&q=80" },
-        { n: "Pasta Arrabiata", p: "€220.00", desc: "Salsa pomodoro con un toque picante.", img: "https://images.unsplash.com/photo-1584940562479-7a760d62d295?auto=format&fit=crop&w=300&q=80" }
-    ],
-    "Postres": [
-        { n: "Fondant Chocolate", p: "€120.00", desc: "Núcleo líquido con helado de vainilla.", img: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=300&q=80" },
-        { n: "Pavlova", p: "€140.00", desc: "Merengue crujiente con frutos rojos.", img: "https://images.unsplash.com/photo-1579372787885-4842526a27e7?auto=format&fit=crop&w=300&q=80" },
-        { n: "Cheesecake", p: "€130.00", desc: "Coulis de fresa artesanal.", img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=300&q=80" }
-    ]
+const menuData = {
+    "Entradas": {
+        bannerImg: "https://images.unsplash.com/photo-1551a47875-4b122c6f67b3?q=80&w=1200&auto=format&fit=crop", // Foto de la pasta del banner original
+        bannerTitle: "Entradas",
+        bannerDesc: "Servido con pasta o papas fritas",
+        items: [
+            { n: "Miso Salmón glaseado", p: "€ 22,00", desc: "Miso de sal dulce con mantequilla. Contiene gluten, lechería", img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=150&auto=format&fit=crop" },
+            { n: "Curry de batata", p: "€ 12,00", desc: "Curry vegetariano con calabaza. Adecuado para mujeres embarazadas", img: "https://images.unsplash.com/photo-1596803889465-46e1489139ae?q=80&w=150&auto=format&fit=crop" },
+            { n: "Pasta Arrabiata", p: "€ 14,00", desc: "Pasta con salsa picante. Contiene gluten", img: "https://images.unsplash.com/photo-1584940562479-7a760d62d295?q=80&w=150&auto=format&fit=crop" },
+            { n: "Burger Royal", p: "€ 16,00", desc: "Hamburguesa de tocino con queso suizo. Contiene gluten, lechería, sésamo", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=150&auto=format&fit=crop" },
+            { n: "Venado tostado", p: "€ 18,00", desc: "Carne de venado con vinagre de... Contiene gluten, sulfito", img: "https://images.unsplash.com/photo-1606854428912-b111795d4135?q=80&w=150&auto=format&fit=crop", price2: "€ 22,00 (400g)" } // Manejo especial para dos precios
+        ]
+    },
+    "Bebidas": {
+        bannerImg: "https://images.unsplash.com/photo-1549098117-62a6f09645b9?q=80&w=1200&auto=format&fit=crop", 
+        bannerTitle: "Nuestra Bodega",
+        bannerDesc: "Selección de vinos y espumosos",
+        items: [
+            { n: "Vino Tinto Reserva", p: "€ 35,00", desc: "Rioja, D.O.Ca. Botella 750ml", img: "https://images.unsplash.com/photo-1586375361292-1331d5c90508?q=80&w=150&auto=format&fit=crop" },
+            { n: "Cerveza Artesanal IPA", p: "€ 7,00", desc: "Lupulada, refrescante. 33cl", img: "https://images.unsplash.com/photo-1608270586620-248524c67de9?q=80&w=150&auto=format&fit=crop" }
+        ]
+    },
+    "Desserts": {
+        bannerImg: "https://images.unsplash.com/photo-1586985289606-b96e8b76407a?q=80&w=1200&auto=format&fit=crop", 
+        bannerTitle: "Postres Caseros",
+        bannerDesc: "El final dulce perfecto",
+        items: [
+            { n: "Tiramisú Clásico", p: "€ 9,50", desc: "Receta tradicional italiana", img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=150&auto=format&fit=crop" },
+            { n: "Tarta de Queso", p: "€ 10,00", desc: "Con coulis de frutos rojos", img: "https://images.unsplash.com/photo-1658832793167-13b93a2022bc?q=80&w=150&auto=format&fit=crop" }
+        ]
+    },
+    "Cocktails": {
+        bannerImg: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1200&auto=format&fit=crop", 
+        bannerTitle: "Coctelería de Autor",
+        bannerDesc: "Mixología premium",
+        items: [
+            { n: "Mojito Clásico", p: "€ 11,00", desc: "Ron, hierbabuena, lima", img: "https://images.unsplash.com/photo-1614313511387-1436a4480ebb?q=80&w=150&auto=format&fit=crop" },
+            { n: "Gin Tonic Premium", p: "€ 13,00", desc: "Ginebra botánica, tónica premium", img: "https://images.unsplash.com/photo-1532635241-17e820acc59f?q=80&w=150&auto=format&fit=crop" }
+        ]
+    }
 };
 
-function render(cat) {
-    const container = document.getElementById('menu-display');
-    container.innerHTML = menuData[cat].map(item => `
-        <div class="item">
-            <img src="${item.img}" class="item-img" alt="${item.n}">
-            <div class="item-info">
-                <h2>${item.n}</h2>
-                <p>${item.desc}</p>
-                <span class="price">${item.p}</span>
-            </div>
-        </div>
-    `).join('');
-}
+function render(catName) {
+    const category = menuData[catName];
+    const dishList = document.getElementById('menu-display');
+    const bannerImg = document.getElementById('banner-img');
+    const bannerTitle = document.getElementById('banner-title');
+    const bannerDesc = document.getElementById('banner-desc');
 
-const tabsContainer = document.getElementById('tabs');
-Object.keys(menuData).forEach(cat => {
-    const btn = document.createElement('button');
-    btn.innerText = cat;
-    btn.onclick = () => render(cat);
-    tabsContainer.appendChild(btn);
-});
-
-render(Object.keys(menuData)[0]);
+    // 1. Actualizar el banner principal de la categoría
