@@ -3,28 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Yummy Place</title>
+    <title>The Yummy Place | Menú Premium</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="banner-cocktails"></div>
-        <div class="brand-info">
+    <header class="main-header" id="header">
+        <div class="header-content">
+            <div class="logo-circle">YP</div>
             <h1>The Yummy Place</h1>
-            <p>Restaurante - Bar - Barra de cócteles</p>
+            <p>Gastronomía de Autor & Coctelería</p>
+            <div class="header-actions">
+                <button class="action-btn">WhatsApp</button>
+                <button class="action-btn">Llamar</button>
+            </div>
         </div>
     </header>
 
-    <nav id="category-tabs" class="tabs"></nav>
+    <div class="search-bar">
+        <input type="text" placeholder="¿Qué se te antoja hoy?" id="search">
+    </div>
 
-    <main class="container">
-        <div id="category-hero" class="category-hero">
-            <h2 id="hero-title">Entradas</h2>
-            <p id="hero-desc">Servido con pasta o papas fritas</p>
+    <nav class="categories-nav" id="tabs"></nav>
+
+    <main id="menu-container"></main>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <div id="modal-body"></div>
         </div>
-        <div id="menu-items" class="menu-list"></div>
-    </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
