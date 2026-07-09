@@ -1,36 +1,46 @@
-/* Reset básico */
-body { margin: 0; font-family: sans-serif; background-color: #f9f9f9; }
+/* Reset básico para evitar espacios extraños */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; color: #333; }
 
-/* Contenedor principal */
-#content { padding: 10px; max-width: 500px; margin: auto; }
+/* Contenedor principal para que nada se desborde */
+#content { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-/* Estilo de cada fila (plato) */
+/* Barra de navegación */
+#tabs { 
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
+    padding: 15px; 
+    background: #fff; 
+    border-bottom: 1px solid #ddd;
+    position: sticky; top: 0; z-index: 10;
+}
+
+button { 
+    border: none; background: #eee; padding: 8px 15px; border-radius: 20px; 
+    cursor: pointer; font-size: 0.9rem; transition: 0.3s;
+}
+
+button:hover { background: #ddd; }
+
+/* Diseño de la tarjeta de cada platillo */
 .item { 
     display: flex; 
     align-items: center; 
+    background: white; 
     padding: 15px; 
-    background: white;
-    border-radius: 15px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 12px; 
+    border-radius: 12px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* La imagen circular */
 .item-img { 
-    width: 60px; 
-    height: 60px; 
-    border-radius: 50%; 
+    width: 70px; height: 70px; 
+    border-radius: 10px; /* Bordes redondeados en lugar de círculo para verse más moderno */
     object-fit: cover; 
     margin-right: 15px; 
-    flex-shrink: 0; 
 }
 
-/* Info del texto */
-.item-info { flex: 1; }
-.item-info h2 { font-size: 1rem; margin: 0; color: #333; }
-.item-info p { font-size: 0.8rem; color: #777; margin: 4px 0; }
-.price { color: #e74c3c; font-weight: bold; font-size: 0.9rem; }
-
-/* Barra de navegación (tabs) */
-#tabs { display: flex; justify-content: space-around; padding: 10px; background: white; }
-button { border: none; background: none; font-size: 0.9rem; padding: 10px; cursor: pointer; }
+.item-info h2 { font-size: 1.1rem; margin: 0 0 5px 0; }
+.item-info p { font-size: 0.85rem; color: #666; margin: 0 0 5px 0; }
+.price { font-weight: bold; color: #d32f2f; }
