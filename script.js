@@ -1,4 +1,4 @@
-const menuData = {
+const menuData = { 
     "Entradas": [
         { n: "Carpaccio de Res", p: "€180.00", desc: "Finas láminas con arúgula y parmesano.", img: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=300&q=80" },
         { n: "Burrata Fresca", p: "€210.00", desc: "Tomates cherry, albahaca y aceite de trufa.", img: "https://images.unsplash.com/photo-1608039756073-6535311e9a3f?auto=format&fit=crop&w=300&q=80" },
